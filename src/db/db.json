@@ -1,0 +1,22 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "It",
+      "description": "Hooror book about a cloun",
+      "author": "Steven King"
+    },
+    {
+      "id": 2,
+      "title": "The Shining",
+      "description": "",
+      "author": "Steven King"
+    },
+    {
+      "id": 3,
+      "author": "Brown",
+      "description": "Book",
+      "title": "Dan"
+    }
+  ]
+}

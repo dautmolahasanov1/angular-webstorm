@@ -1,0 +1,11 @@
+<h3>Books</h3>
+
+<a routerLink="/books/edit">Add new</a>
+<div class="card-wrapper">
+  <app-book-item
+    *ngFor="let book of books"
+    [book]="book"
+    (deleteClicked)="onDelete($event)"
+  ></app-book-item>
+</div>
+

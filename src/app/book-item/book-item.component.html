@@ -1,0 +1,10 @@
+<mat-card *ngIf="book">
+  <mat-card-title>BOOK</mat-card-title>
+  
+  <mat-card-content>{{book.title}}</mat-card-content>
+  <mat-card-subtitle>{{book.author}}</mat-card-subtitle>
+  <mat-card-footer>
+    <button mat-stroked-button [routerLink]="['/books', 'edit', book.id ]">Edit</button>
+    <button mat-stroked-button (click)="onDelete()">Delete</button>
+  </mat-card-footer>
+</mat-card>
