@@ -1,6 +1,7 @@
 <h3>Books</h3>
 
-<a routerLink="/main/books/edit">Add new</a>
+<a *ngIf="hasPermissions" routerLink="/main/books/edit">Add new</a>
+
 <div class="card-wrapper">
   <app-book-item
     *ngFor="let book of books"

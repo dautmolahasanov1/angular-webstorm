@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 // ===== MATERIAL UI ===== //
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AppRoutingModule } from './app-routing.module';
@@ -25,6 +26,7 @@ import { AppRoutingModule } from './app-routing.module';
     HttpClientModule,
     // Material UI //
     BrowserAnimationsModule,
+    MatButtonModule,
     MatIconModule,
     MatToolbarModule
     // Material UI //

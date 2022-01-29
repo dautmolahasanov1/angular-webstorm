@@ -2,24 +2,17 @@
 
 <mat-toolbar>
   <nav class="header">
-    <button mat-icon-button class="icon" aria-label="icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
-    </button>
-
-    <button mat-stroked-button class="header-link" >
+    <button mat-stroked-button class="header-link" routerLink="/main/books" >
       Books
-    </button>
-    <button mat-stroked-button class="header-link" >
-      Lists
     </button>
     <span class="spacer"></span>
 
-    <button mat-icon-button class="icon favorite-icon" aria-label="icon-button with heart icon">
+    <button mat-icon-button class="icon favorite-icon" aria-label="icon-button with heart icon" color="warn">
       <mat-icon>favorite</mat-icon>
     </button>
 
-    <button mat-icon-button class="icon" aria-label="icon-button with share icon">
-      <mat-icon>share</mat-icon>
+    <button *ngIf="hasUser" (click)="onLogout()" mat-stroked-button class="header-link" color="primary">
+      Log out
     </button>
   </nav>
 </mat-toolbar>

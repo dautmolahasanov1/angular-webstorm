@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/auth/services/auth.service';
 import { Book } from '../../models/books.module';
 import { BookService } from '../../services/books.service';
 
@@ -11,11 +12,17 @@ import { BookService } from '../../services/books.service';
 export class BooksListComponent implements OnInit {
 
   books: Book[];
+  hasPermissions: boolean = false;
 
-  constructor(private bookService: BookService) {
+  constructor(
+    private authService: AuthService,
+    private bookService: BookService
+  ) {
     this.books = [];
   }
   ngOnInit(): void {
+    this.hasPermissions = this.authService.hasPermissions( "admin");
+
     this.bookService.getBooks$().subscribe({
       next: (response: unknown) => {
         this.books = response as Book[];

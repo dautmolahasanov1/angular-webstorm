@@ -16,7 +16,7 @@ export class AclGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const loggedUser = this.authService.getLoggedUserFromLocalStorage()
 
-    if (loggedUser?.role !== "admin") {
+    if (!this.authService.hasPermissions("admin")) {
       this.router.navigate(["/main"]);
 
       return false;
