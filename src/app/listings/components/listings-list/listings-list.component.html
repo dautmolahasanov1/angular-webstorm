@@ -1,0 +1,14 @@
+<h3>Listings</h3>
+
+<a *ngIf="hasPermissions" routerLink="/main/listings/edit">Add new</a>
+
+<div class="card-wrapper">
+  <app-listing-item
+    *ngFor="let listing of listings"
+    [listing]="listing"
+    (deleteClicked)="onDelete($event)"
+    (likeClicked)="onLike($event)"
+    (unlikeClicked)="onUnlike($event)"
+  ></app-listing-item>
+</div>
+

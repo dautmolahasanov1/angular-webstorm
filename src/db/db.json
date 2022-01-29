@@ -14,23 +14,41 @@
     }
   ],
   "books": [
-  {
-    "id": 1,
-    "author": "Steven King",
-    "description": "Hooror book about a cloun",
-    "title": "It"
-  },
-  {
-    "id": 2,
-    "author": "Steven King",
-    "description": "Jack Nicholson",
-    "title": "The Shining"
-  },
-  {
-    "id": 3,
-    "author": "Dan Brown",
-    "description": "Book",
-    "title": "The 6th Stamp"
-  }
-]
+    {
+      "id": 1,
+      "author": "Steven King",
+      "description": "Hooror book about a cloun",
+      "title": "It"
+    },
+    {
+      "id": 2,
+      "author": "Steven King",
+      "description": "Jack Nicholson",
+      "title": "The Shining"
+    },
+    {
+      "id": 3,
+      "author": "Dan Brown",
+      "description": "Book",
+      "title": "The 6th Stamp"
+    }
+  ],
+  "listings": [
+    {
+      "id": 1,
+      "type": "Remote",
+      "description": "You react",
+      "title": "React Developer",
+      "likeCount": 1,
+      "category": "Front-end"
+    },
+    {
+      "id": 3,
+      "type": "hybrid",
+      "description": "You clean",
+      "title": "Job",
+      "likeCount": 3,
+      "category": "Back-end"
+    }
+  ]
 }

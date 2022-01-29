@@ -10,14 +10,24 @@ const routes: Route[] = [
     canLoad: [NonAuthGuard]
   },
   {
-    path: "main",
+    path: "main/books",
     loadChildren: () => import("./books/books.module").then(m => m.BooksModule),
+    canLoad: [AuthGuard]
+  },
+  {
+    path: "main/listings",
+    loadChildren: () => import("./listings/listings.module").then(m => m.ListingsModule),
     canLoad: [AuthGuard]
   },
   {
     path: "",
     pathMatch: "full",
-    redirectTo: "main"
+    redirectTo: "main/books"
+  },
+  {
+    path: "main",
+    pathMatch: "full",
+    redirectTo: "main/listings"
   }
 ]
 

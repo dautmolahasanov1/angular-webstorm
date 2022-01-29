@@ -1,0 +1,32 @@
+<h3>{{ formGroup?.get("id")?.value ? "Edit listing" : "Add new listing"  }}</h3>
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="listing-form">
+
+  <mat-form-field appearance="outline">
+    <mat-label>Title</mat-label>
+    <input autocomplete="off" matInput placeholder="Title" formControlName="title" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Type</mat-label>
+    <input autocomplete="off" matInput placeholder="Type" formControlName="type" />
+  </mat-form-field>
+
+
+  <mat-form-field appearance="outline">
+    <mat-label>Description</mat-label>
+    <textarea autocomplete="off" matInput placeholder="Description" formControlName="description">
+    </textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Category</mat-label>
+    <mat-select autocomplete="off" matInput placeholder="Category" formControlName="category" >
+      <mat-option *ngFor="let job of jobCategories" [value]="job">
+        {{job}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-stroked-button type="submit" [disabled]="formGroup.invalid">{{ formGroup?.get("id")?.value ? "Save" : "Add"  }}</button>
+  <button mat-stroked-button routerLink="/main/listings">Back to list</button>
+</form>

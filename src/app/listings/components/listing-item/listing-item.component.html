@@ -1,0 +1,66 @@
+<mat-card *ngIf="listing">
+  <mat-card-title>{{listing.category}}</mat-card-title>
+  <mat-card-subtitle>{{listing.type}}</mat-card-subtitle>
+
+  <mat-card-content>Job ID: {{listing.id}}</mat-card-content>
+  <mat-card-content>{{listing.title}}</mat-card-content>
+  <mat-card-content>{{listing.description}}</mat-card-content>
+
+  <mat-card-actions class="actions">
+    <button
+      *ngIf="isAdmin"
+      mat-button
+      [routerLink]="['/main/listings', 'edit', listing.id ]"
+    >
+      Edit
+    </button>
+
+    <button
+      *ngIf="isAdmin"
+      mat-button
+      (click)="onDelete()"
+      color="warn"
+    >
+      Delete
+    </button>
+
+    <button
+      *ngIf="isUser"
+      mat-button
+      [matTooltip]="!listing.applicantIds?.length ? 'Be the first to apply' : 'Apply for this job'"
+      matTooltipPosition="above"
+      (click)="onApply()"
+    >
+      Apply
+    </button>
+
+    <span class="spacer"></span>
+
+    <button
+      *ngIf="isUser"
+      mat-icon-button
+      [matBadge]="listing.likeCount"
+      matBadgeColor="warn"
+      matBadgePosition="before"
+      matTooltipPosition="above"
+      matTooltip="Remove from liked"
+      (click)="onUnlike()"
+    >
+      <mat-icon>favorite</mat-icon>
+    </button>
+
+    <button
+      *ngIf="isUser"
+      mat-icon-button
+      [matBadge]="listing.likeCount"
+      matBadgeColor="warn"
+      matBadgePosition="before"
+      matTooltipPosition="above"
+      matTooltip="Add to liked"
+      (click)="onLike()"
+      color="warn"
+    >
+      <mat-icon>favorite</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>
