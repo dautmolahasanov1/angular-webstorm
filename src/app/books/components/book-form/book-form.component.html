@@ -3,21 +3,21 @@
 
   <mat-form-field appearance="outline">
     <mat-label>Title</mat-label>
-    <input autocomplete="off" matInput placeholder="Title" formControlName="title" >
+    <input autocomplete="off" matInput placeholder="Title" formControlName="title" />
   </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Author</mat-label>
-      <input autocomplete="off" matInput placeholder="Author" formControlName="author" >
+      <input autocomplete="off" matInput placeholder="Author" formControlName="author" />
     </mat-form-field>
 
 
     <mat-form-field appearance="outline">
       <mat-label>Description</mat-label>
-      <textarea autocomplete="off" matInput placeholder="Description" formControlName="description" >
+      <textarea autocomplete="off" matInput placeholder="Description" formControlName="description">
       </textarea>
     </mat-form-field>
 
   <button mat-stroked-button type="submit" [disabled]="formGroup.invalid">{{ formGroup?.get("id")?.value ? "Save" : "Add"  }}</button>
-  <button mat-stroked-button routerLink="/books">Back to list</button>
+  <button mat-stroked-button routerLink="/main/books">Back to list</button>
 </form>

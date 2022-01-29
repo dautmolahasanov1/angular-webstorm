@@ -66,8 +66,8 @@ export class BookFormComponent implements OnInit, OnDestroy {
 
 
     request$.subscribe({
-      next: (response) => {
-        this.router.navigate(["/books"])
+      next: () => {
+        this.router.navigate(["/main", "books"])
       }
     });
   }
