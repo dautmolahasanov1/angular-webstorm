@@ -1,0 +1,12 @@
+<h3>Users</h3>
+
+<a *ngIf="hasPermissions" routerLink="/main/users/edit">Add new</a>
+
+<div class="card-wrapper">
+  <app-user-item
+    *ngFor="let user of users"
+    [user]="user"
+    (deleteClicked)="onDelete($event)"
+  ></app-user-item>
+</div>
+

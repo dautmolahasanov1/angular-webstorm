@@ -12,9 +12,7 @@ import { AuthService } from '../auth/services/auth.service';
 export class HeaderComponent implements OnInit, OnDestroy {
 
   userRole: string | null = null;
-  isAdmin: boolean = false;
-  isUser: boolean = false;
-
+  
   destroy$ = new Subject<boolean>()
 
   constructor(

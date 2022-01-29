@@ -31,14 +31,14 @@ export class UserService {
     return this.http.delete<void>(`${environment.apiUrl}/users/${id}`);
   }
 
-  addToLiked$(user: User, listingId: number): Observable<User> {
-    const likedUser = {...user, liked: [...user.liked, listingId]}
+  addToLiked$(user: User, userId: number): Observable<User> {
+    const likedUser = {...user, liked: [...user.liked, userId]}
     return this.http.put<User>(`${environment.apiUrl}/users/${user.id}`, likedUser)
   }
 
-  removeFromLiked$(user: User, listingId: number): Observable<User> {
+  removeFromLiked$(user: User, userId: number): Observable<User> {
     console.log(user.liked)
-    const likedUser = {...user, liked: user.liked.filter((id) => id !== listingId)}
+    const likedUser = {...user, liked: user.liked.filter((id) => id !== userId)}
     return this.http.put<User>(`${environment.apiUrl}/users/${user.id}`, likedUser)
   }
 }

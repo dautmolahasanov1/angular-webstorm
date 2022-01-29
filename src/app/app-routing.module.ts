@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Route, RouterModule } from "@angular/router";
+import { AdminAuthGuard } from "./guards/admin-auth.guard";
 import { AuthGuard } from "./guards/auth.guard";
 import { NonAuthGuard } from "./guards/non-auth.guard";
 
@@ -18,6 +19,11 @@ const routes: Route[] = [
     path: "main/listings",
     loadChildren: () => import("./listings/listings.module").then(m => m.ListingsModule),
     canLoad: [AuthGuard]
+  },
+  {
+    path: "main/users",
+    loadChildren: () => import("./users/users.module").then(m => m.UsersModule),
+    canLoad: [AdminAuthGuard]
   },
   {
     path: "",

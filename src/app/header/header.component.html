@@ -2,11 +2,14 @@
 
 <mat-toolbar>
   <nav class="header">
-    <button mat-stroked-button class="header-link" routerLink="/main/books" >
+    <button *ngIf="userRole !== null" mat-stroked-button class="header-link" routerLink="/main/books" >
       Books
     </button>
-     <button mat-stroked-button class="header-link" routerLink="/main/listings" >
+    <button *ngIf="userRole !== null" mat-stroked-button class="header-link" routerLink="/main/listings" >
       Listings
+    </button>
+    <button *ngIf="userRole === 'admin'" mat-stroked-button class="header-link" routerLink="/main/users" >
+      Users
     </button>
     <span class="spacer"></span>
 
@@ -18,7 +21,7 @@
       <mat-icon>favorite</mat-icon>
     </button>
 
-    <button *ngIf="userRole !== null" (click)="onLogout()" mat-stroked-button class="header-link" color="primary">
+    <button *ngIf="userRole !== null" (click)="onLogout()" mat-stroked-button class="header-link" color="warn">
       Log out
     </button>
   </nav>

@@ -1,0 +1,8 @@
+.user-form {
+  display: flex;
+  flex-flow: column;
+  width: 320px;
+  input, textarea {
+    width: 100%;
+  }
+}

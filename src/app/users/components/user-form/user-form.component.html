@@ -1,0 +1,39 @@
+<h3>{{ formGroup?.get("id")?.value ? "Edit user" : "Add new user"  }}</h3>
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="user-form">
+  <mat-form-field appearance="outline">
+    <mat-label>Name</mat-label>
+    <input autocomplete="off" matInput placeholder="Name" formControlName="name" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Username</mat-label>
+    <input autocomplete="off" matInput placeholder="Username" formControlName="username" />
+  </mat-form-field>
+
+
+  <mat-form-field appearance="outline">
+    <mat-label>Password</mat-label>
+    <input type="password" autocomplete="off" matInput placeholder="Password" formControlName="password" />
+  </mat-form-field>
+
+  <mat-form-field *ngIf="isAdmin" appearance="outline">
+    <mat-label>Role</mat-label>
+    <mat-select autocomplete="off" matInput placeholder="Role" formControlName="role">
+      <mat-option *ngFor="let job of ['admin', 'user']" [value]="job">
+        {{job}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Liked</mat-label>
+    <mat-select multiple autocomplete="off" matInput placeholder="Liked" formControlName="liked">
+      <mat-option *ngFor="let listingId of [1,2,3,4]" [value]="listingId">
+        {{listingId}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-stroked-button type="submit" [disabled]="formGroup.invalid">{{ formGroup?.get("id")?.value ? "Save" : "Add"  }}</button>
+  <button mat-stroked-button routerLink="/main/users">Back to list</button>
+</form>
