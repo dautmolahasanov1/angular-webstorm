@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { AuthService } from '../auth/services/auth.service';
@@ -12,7 +11,9 @@ import { AuthService } from '../auth/services/auth.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
-  hasUser: boolean = false;
+  userRole: string | null = null;
+  isAdmin: boolean = false;
+  isUser: boolean = false;
 
   destroy$ = new Subject<boolean>()
 
@@ -22,10 +23,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.authService.getHasUser$().pipe(
+    this.authService.getUserRole$().pipe(
       takeUntil(this.destroy$)
     ).subscribe({
-      next: (hasUser: boolean) => this.hasUser = hasUser,
+      next: (role: string | null) => this.userRole = role,
     });
   }
 

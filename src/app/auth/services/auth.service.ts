@@ -1,16 +1,16 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, map, Observable } from "rxjs";
+import { User } from "src/app/users/models/user.model";
 import { environment } from "src/environments/environment";
 import { Login } from "../models/login.model";
-import { User } from "../models/user.model";
 
 @Injectable({
   providedIn: "root"
 })
 export class AuthService {
 
-  hasUser$ = new BehaviorSubject<boolean>(false);
+  userRole$ = new BehaviorSubject<string | null>(null);
 
   constructor(private http: HttpClient) {
 
@@ -40,17 +40,17 @@ export class AuthService {
     return JSON.parse(user) as User;
   }
 
-  getHasUser$(): Observable<boolean>  {
-    return this.hasUser$.asObservable();
+  getUserRole$(): Observable<string | null>  {
+    return this.userRole$.asObservable();
   }
 
-  setHasUser(value: boolean): void {
-    this.hasUser$.next(value);
+  setUserRole(role: string | null): void {
+    this.userRole$.next(role);
   }
 
   logout(): void {
     localStorage.removeItem("loggedUser");
-    this.setHasUser(false);
+    this.setUserRole(null);
   }
 
   hasPermissions (role: string) {
@@ -60,12 +60,12 @@ export class AuthService {
   setLoggedUserInLocalStorage(user: User): void {
     delete user.password;
     localStorage.setItem("loggedUser", JSON.stringify(user));
-    this.setHasUser(true);
+    this.setUserRole(user.role);
   }
 
   getLoggedUserFromLocalStorage(): User | null {
     const loggedUser = this.getLoggedUser();
-    this.setHasUser(!!loggedUser);
+    this.setUserRole(loggedUser?.role || null);
     return loggedUser;
   }
 }

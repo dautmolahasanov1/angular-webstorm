@@ -6,7 +6,6 @@ import { Listing } from "../models/listing.model";
 
 @Injectable({
   providedIn: 'root' // singleton
-  // providedIn: 'module-name' // scoped
 })
 export class ListingService {
   constructor(private http: HttpClient){
@@ -32,17 +31,23 @@ export class ListingService {
     return this.http.delete<void>(`${environment.apiUrl}/listings/${id}`);
   }
 
+  applyForListing$(listing: Listing, applicantId: number): Observable<Listing> {
+    const appliedListings = {...listing, applicantIds: [...listing.applicantIds, applicantId]}
+    return this.http.put<Listing>(`${environment.apiUrl}/listings/${listing.id}`, appliedListings)
+  }
+
+  unapplyForListing$(listing: Listing, applicantId: number): Observable<Listing> {
+    const appliedListings = {...listing, applicantIds: listing.applicantIds.filter((id) => id !== applicantId)}
+    return this.http.put<Listing>(`${environment.apiUrl}/listings/${listing.id}`, appliedListings)
+  }
+
   likeListing$(listing: Listing): Observable<Listing> {
     const likedListing = {...listing, likeCount: listing.likeCount + 1}
-    console.log(listing);
-    console.log(likedListing);
     return this.http.put<Listing>(`${environment.apiUrl}/listings/${listing.id}`, likedListing)
   }
 
   unlikeListing$(listing: Listing): Observable<Listing> {
     const likedListing = {...listing, likeCount: listing.likeCount - 1 }
-    console.log(listing);
-    console.log(likedListing);
     return this.http.put<Listing>(`${environment.apiUrl}/listings/${listing.id}`, likedListing)
   }
 }

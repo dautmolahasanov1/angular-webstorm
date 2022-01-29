@@ -27,38 +27,42 @@
     <button
       *ngIf="isUser"
       mat-button
-      [matTooltip]="!listing.applicantIds?.length ? 'Be the first to apply' : 'Apply for this job'"
       matTooltipPosition="above"
+      [color]="listing.applicantIds.includes(user?.id!) ? 'primary' : 'secondary' "
       (click)="onApply()"
     >
-      Apply
+      {{listing.applicantIds.includes(user?.id!) ? "Revoke application" : "Apply" }}
     </button>
 
     <span class="spacer"></span>
 
     <button
-      *ngIf="isUser"
+      *ngIf="isUser && user?.liked?.includes(listing?.id || 0)"
       mat-icon-button
       [matBadge]="listing.likeCount"
       matBadgeColor="warn"
+      matBadgeSize="small"
       matBadgePosition="before"
       matTooltipPosition="above"
       matTooltip="Remove from liked"
       (click)="onUnlike()"
+      color="warn"
     >
       <mat-icon>favorite</mat-icon>
     </button>
 
     <button
-      *ngIf="isUser"
+      *ngIf="!user?.liked?.includes(listing?.id || 0)"
+      [disabled]="!isUser"
+      [matBadgeDisabled]="!isUser"
       mat-icon-button
       [matBadge]="listing.likeCount"
       matBadgeColor="warn"
+      [matBadgeSize]=" isUser ? 'small' : 'medium'"
       matBadgePosition="before"
       matTooltipPosition="above"
       matTooltip="Add to liked"
       (click)="onLike()"
-      color="warn"
     >
       <mat-icon>favorite</mat-icon>
     </button>

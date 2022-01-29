@@ -5,5 +5,5 @@ export interface Listing {
   likeCount: number;
   type: string;
   category: string;
-  applicantIds?: number[]
+  applicantIds: number[]
 }

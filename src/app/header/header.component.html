@@ -10,11 +10,15 @@
     </button>
     <span class="spacer"></span>
 
-    <button mat-icon-button class="icon favorite-icon" aria-label="icon-button with heart icon" color="warn">
+    <button *ngIf="userRole === 'user'" mat-button class="icon favorite-icon" aria-label="icon-button with heart icon">
+      My applications
+    </button>
+
+    <button *ngIf="userRole === 'user'" matTooltip="My favorites" mat-icon-button class="icon favorite-icon" aria-label="icon-button with heart icon" color="warn">
       <mat-icon>favorite</mat-icon>
     </button>
 
-    <button *ngIf="hasUser" (click)="onLogout()" mat-stroked-button class="header-link" color="primary">
+    <button *ngIf="userRole !== null" (click)="onLogout()" mat-stroked-button class="header-link" color="primary">
       Log out
     </button>
   </nav>

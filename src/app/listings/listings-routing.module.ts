@@ -26,11 +26,6 @@ const routes: Route[] = [
         component: ListingFormComponent,
         canActivate: [AclGuard]
       },
-      // {
-      //   path: "",
-      //   pathMatch: "full",
-      //   redirectTo: ""
-      // }
     ]
   }
 ]

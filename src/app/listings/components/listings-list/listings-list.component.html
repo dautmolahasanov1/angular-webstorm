@@ -6,6 +6,7 @@
   <app-listing-item
     *ngFor="let listing of listings"
     [listing]="listing"
+    (applyClicked)="onApply($event)"
     (deleteClicked)="onDelete($event)"
     (likeClicked)="onLike($event)"
     (unlikeClicked)="onUnlike($event)"

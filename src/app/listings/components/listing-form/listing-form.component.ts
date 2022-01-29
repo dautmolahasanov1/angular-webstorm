@@ -84,6 +84,7 @@ export class ListingFormComponent implements OnInit, OnDestroy {
       description: [ listing?.description || ""],
       title: [ listing?.title || "", [Validators.required]],
       likeCount: [listing?.likeCount || 0],
+      applicantIds: [listing?.applicantIds || []],
       category: [ listing?.category || "", [Validators.required]],
     });
   }

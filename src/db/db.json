@@ -4,13 +4,38 @@
       "id": 1,
       "username": "admin",
       "password": "123",
-      "role": "admin"
+      "role": "admin",
+      "liked": [
+        1
+      ]
     },
     {
       "id": 2,
       "username": "user",
       "password": "123",
-      "role": "user"
+      "role": "user",
+      "liked": [
+        3,
+        1
+      ]
+    },
+    {
+      "id": 3,
+      "username": "usere",
+      "password": "123",
+      "role": "user",
+      "liked": [
+        1
+      ]
+    },
+    {
+      "id": 4,
+      "username": "userr",
+      "password": "123",
+      "role": "user",
+      "liked": [
+        3
+      ]
     }
   ],
   "books": [
@@ -39,7 +64,10 @@
       "type": "Remote",
       "description": "You react",
       "title": "React Developer",
-      "likeCount": 1,
+      "likeCount": 6,
+      "applicantIds": [
+        2
+      ],
       "category": "Front-end"
     },
     {
@@ -47,7 +75,10 @@
       "type": "hybrid",
       "description": "You clean",
       "title": "Job",
-      "likeCount": 3,
+      "likeCount": 5,
+      "applicantIds": [
+        2
+      ],
       "category": "Back-end"
     }
   ]
