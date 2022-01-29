@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AuthService } from 'src/app/auth/services/auth.service';
-import { Book } from '../../models/books.module';
+import { Book } from '../../models/books.model';
 
 @Component({
   selector: 'app-book-item',

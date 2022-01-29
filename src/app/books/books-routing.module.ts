@@ -12,24 +12,25 @@ const routes: Route[] = [
     component: BooksComponent,
     children: [
       {
-        path: "books",
+        path: "",
+        pathMatch: "full",
         component: BooksListComponent
       },
       {
-        path: "books/edit",
+        path: "edit",
         component: BookFormComponent,
         canActivate: [AclGuard]
       },
       {
-        path: "books/edit/:id",
+        path: "edit/:id",
         component: BookFormComponent,
         canActivate: [AclGuard]
       },
-      {
-        path: "",
-        pathMatch: "full",
-        redirectTo: "books"
-      }
+      // {
+      //   path: "",
+      //   pathMatch: "full",
+      //   redirectTo: ""
+      // }
     ]
   }
 ]

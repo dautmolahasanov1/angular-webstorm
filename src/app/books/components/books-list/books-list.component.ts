@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/services/auth.service';
-import { Book } from '../../models/books.module';
+import { Book } from '../../models/books.model';
 import { BookService } from '../../services/books.service';
 
 @Component({

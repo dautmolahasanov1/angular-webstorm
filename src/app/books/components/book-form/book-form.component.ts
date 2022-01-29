@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { of, Subject, switchMap, takeUntil } from 'rxjs';
-import { Book } from '../../models/books.module';
+import { Book } from '../../models/books.model';
 import { BookService } from '../../services/books.service';
 
 @Component({
