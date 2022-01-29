@@ -1,10 +1,10 @@
 <h3>{{ formGroup?.get("id")?.value ? "Edit book" : "Add new book"  }}</h3>
 <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="book-form">
 
-    <mat-form-field appearance="outline">
-      <mat-label>Title</mat-label>
-      <input autocomplete="off" matInput placeholder="Title" formControlName="title" >
-    </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Title</mat-label>
+    <input autocomplete="off" matInput placeholder="Title" formControlName="title" >
+  </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Author</mat-label>
@@ -14,9 +14,9 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Description</mat-label>
-      <textarea autocomplete="off" matInput placeholder="Description" formControlName="description" ></textarea>
+      <textarea autocomplete="off" matInput placeholder="Description" formControlName="description" >
+      </textarea>
     </mat-form-field>
-
 
   <button mat-stroked-button type="submit" [disabled]="formGroup.invalid">{{ formGroup?.get("id")?.value ? "Save" : "Add"  }}</button>
   <button mat-stroked-button routerLink="/books">Back to list</button>

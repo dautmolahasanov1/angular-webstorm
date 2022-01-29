@@ -8,15 +8,15 @@
     },
     {
       "id": 2,
-      "title": "The Shining",
-      "description": "",
-      "author": "Steven King"
+      "author": "Steven King",
+      "description": "Jack Nicholson",
+      "title": "The Shining"
     },
     {
       "id": 3,
-      "author": "Brown",
+      "author": "Dan Brown",
       "description": "Book",
-      "title": "Dan"
+      "title": "The 6th Stamp"
     }
   ]
 }

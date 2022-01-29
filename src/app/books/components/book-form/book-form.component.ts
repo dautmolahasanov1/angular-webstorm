@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { of, Subject, switchMap, takeUntil } from 'rxjs';
-import { Book } from '../books.module';
-import { BookService } from '../books.service';
+import { Book } from '../../models/books.module';
+import { BookService } from '../../services/books.service';
 
 @Component({
   selector: 'app-book-form',
@@ -13,16 +13,21 @@ import { BookService } from '../books.service';
 export class BookFormComponent implements OnInit, OnDestroy {
   formGroup: FormGroup;
 
-    destroy$ = new Subject<boolean>()
+  destroy$ = new Subject<boolean>();
 
   constructor(
     private bookService: BookService,
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    ) {
-    this.formGroup = new FormGroup({});
-   }
+  ) {
+    this.formGroup = new FormGroup({ // initialize formGroup in the constructor with empty values
+      id: new FormControl(''),
+      author: new FormControl(''),
+      title: new FormControl(''),
+      description: new FormControl(''),
+    });
+  }
 
   ngOnInit(): void {
 

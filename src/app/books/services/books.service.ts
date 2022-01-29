@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core"
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
-import { Book } from "./books.module";
+import { Book } from "../models/books.module";
 
 @Injectable({
   providedIn: 'root' // singleton
@@ -25,7 +25,7 @@ export class BookService {
   }
 
   putBook$(book: Book): Observable<Book> {
-    return this.http.post<Book>(`${environment.apiUrl}/books/${book.id}`, book);
+    return this.http.put<Book>(`${environment.apiUrl}/books/${book.id}`, book);
   }
 
   deleteBook$(id: number): Observable<void> {
