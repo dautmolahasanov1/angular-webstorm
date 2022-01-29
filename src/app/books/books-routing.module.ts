@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Route, RouterModule } from "@angular/router";
+import { AclGuard } from "../guards/acl.guard";
 
 import { BookFormComponent } from "./components/book-form/book-form.component";
 import { BooksListComponent } from "./components/books-list/books-list.component";
@@ -16,11 +17,13 @@ const routes: Route[] = [
       },
       {
         path: "books/edit",
-        component: BookFormComponent
+        component: BookFormComponent,
+        canActivate: [AclGuard]
       },
       {
         path: "books/edit/:id",
-        component: BookFormComponent
+        component: BookFormComponent,
+        canActivate: [AclGuard]
       },
       {
         path: "",

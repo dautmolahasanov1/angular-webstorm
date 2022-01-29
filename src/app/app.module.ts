@@ -26,7 +26,7 @@ import { AppRoutingModule } from './app-routing.module';
     // Material UI //
     BrowserAnimationsModule,
     MatIconModule,
-    MatToolbarModule,
+    MatToolbarModule
     // Material UI //
   ],
   providers: [],

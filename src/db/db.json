@@ -1,22 +1,36 @@
 {
-  "books": [
+  "users": [
     {
       "id": 1,
-      "title": "It",
-      "description": "Hooror book about a cloun",
-      "author": "Steven King"
+      "username": "admin",
+      "password": "123",
+      "role": "admin"
     },
     {
       "id": 2,
-      "author": "Steven King",
-      "description": "Jack Nicholson",
-      "title": "The Shining"
-    },
-    {
-      "id": 3,
-      "author": "Dan Brown",
-      "description": "Book",
-      "title": "The 6th Stamp"
+      "username": "user",
+      "password": "123",
+      "role": "user"
     }
-  ]
+  ],
+  "books": [
+  {
+    "id": 1,
+    "author": "Steven King",
+    "description": "Hooror book about a cloun",
+    "title": "It"
+  },
+  {
+    "id": 2,
+    "author": "Steven King",
+    "description": "Jack Nicholson",
+    "title": "The Shining"
+  },
+  {
+    "id": 3,
+    "author": "Dan Brown",
+    "description": "Book",
+    "title": "The 6th Stamp"
+  }
+]
 }

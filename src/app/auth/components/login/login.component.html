@@ -1,0 +1,16 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="login-form">
+
+  <mat-form-field appearance="outline">
+    <mat-label>Username</mat-label>
+    <input autocomplete="off" matInput placeholder="Username" formControlName="username" />
+  </mat-form-field>
+
+
+  <mat-form-field appearance="outline">
+    <mat-label>Password</mat-label>
+    <input type="password" autocomplete="off" matInput placeholder="Password" formControlName="password" />
+  </mat-form-field>
+
+  <button mat-stroked-button [disabled]="formGroup.invalid" type="submit">Login</button>
+
+</form>
