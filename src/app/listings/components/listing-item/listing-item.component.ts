@@ -50,7 +50,5 @@ export class ListingItemComponent implements OnInit {
     });
     this.isAdmin = this.user?.role === "admin";
     this.isUser = this.user?.role === "user";
-
-    console.log(this.userId, this.isAdmin, this.isUser)
   }
 }

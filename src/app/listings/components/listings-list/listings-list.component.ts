@@ -73,29 +73,25 @@ export class ListingsListComponent implements OnInit {
     console.log(user);
 
     this.listingService.likeListing$(listing).subscribe({
-      next: () => {
-        this.getListings();
-      }
+      next: () => {}
     });
 
-    console.log(123)
     this.userService.addToLiked$(user, listing.id!).subscribe({
       next: () => {
-        this.getListings();
       }
     });
+    this.getListings();
   }
 
   onUnlike({listing, user} : {listing: Listing, user: User}): void {
       this.listingService.unlikeListing$(listing).subscribe({
         next: () => {
-          this.getListings();
         }
       });
       this.userService.removeFromLiked$(user, listing.id!).subscribe({
         next: () => {
-          this.getListings();
         }
       });
+      this.getListings();
     }
 }

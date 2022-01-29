@@ -34,7 +34,8 @@
       "password": "123",
       "role": "user",
       "liked": [
-        3
+        3,
+        1
       ]
     }
   ],
@@ -64,8 +65,9 @@
       "type": "Remote",
       "description": "You react",
       "title": "React Developer",
-      "likeCount": 6,
+      "likeCount": 7,
       "applicantIds": [
+        4,
         2
       ],
       "category": "Front-end"
