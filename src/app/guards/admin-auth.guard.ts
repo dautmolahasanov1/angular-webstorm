@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, CanLoad, Route, Router} from "@angular/router";
+import { CanLoad, Route, Router} from "@angular/router";
 import { AuthService } from "../auth/services/auth.service";
 
 @Injectable({
@@ -17,7 +17,7 @@ export class AdminAuthGuard implements CanLoad {
     const loggedUser = this.authService.getLoggedUserFromLocalStorage();
 
     if (!this.authService.hasPermissions("admin")) {
-      this.router.navigate(["/main", "listings"]);
+      this.router.navigate(["/main", "users", "edit", loggedUser?.id!]);
 
       return false;
     }

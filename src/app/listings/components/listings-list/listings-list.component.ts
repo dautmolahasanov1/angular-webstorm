@@ -14,7 +14,10 @@ import { ListingService } from '../../services/listings.service';
 export class ListingsListComponent implements OnInit {
 
   listings: Listing[];
+  filteredListings: Listing[];
   hasPermissions: boolean = false;
+  showFiltered: boolean = false;
+  loggedUser: User | null = null;
 
   constructor(
     private authService: AuthService,
@@ -22,12 +25,15 @@ export class ListingsListComponent implements OnInit {
     private userService: UserService,
   ) {
     this.listings = [];
+    this.filteredListings = [];
   }
 
   getListings() {
     this.listingService.getListings$().subscribe({
       next: (response: unknown) => {
         this.listings = response as Listing[];
+        this.filteredListings = this.listings.filter(({ id })=> this.loggedUser?.liked.includes(id));
+        console.log(this.listings, this.filteredListings)
       },
       error: (error: HttpErrorResponse) => {
         console.log(error)
@@ -35,25 +41,38 @@ export class ListingsListComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.hasPermissions = this.authService.hasPermissions( "admin");
+  getUser(): void {
+    this.loggedUser = this.authService.getLoggedUserFromLocalStorage();
+  }
+
+  updateListingAndUser(): void {
     this.getListings();
+    this.getUser();
+  }
+
+  toggleFilter(): void {
+    this.showFiltered = !this.showFiltered;
+    console.log("Fiiltering", this.showFiltered);
+  }
+
+  ngOnInit(): void {
+    this.hasPermissions = this.authService.hasPermissions("admin");
+    this.updateListingAndUser();
   }
 
   // This will toggle application for job
   onApply(listing: Listing): void {
-    const applicantId = this.authService.getLoggedUserFromLocalStorage()?.id
 
-    const newApplicant = !listing.applicantIds.includes(applicantId!)
+    const newApplicant = !listing.applicantIds.includes(this.loggedUser?.id!)
 
     if (newApplicant) {
-      this.listingService.applyForListing$(listing, applicantId!).subscribe({
+      this.listingService.applyForListing$(listing, this.loggedUser?.id!).subscribe({
         next: () => {
           this.getListings();
         }
       });
     } else {
-      this.listingService.unapplyForListing$(listing, applicantId!).subscribe({
+      this.listingService.unapplyForListing$(listing, this.loggedUser?.id!).subscribe({
         next: () => {
           this.getListings();
         }
@@ -70,7 +89,6 @@ export class ListingsListComponent implements OnInit {
   }
 
   onLike({listing, user} : {listing: Listing, user: User}): void {
-    console.log(user);
 
     this.listingService.likeListing$(listing).subscribe({
       next: () => {}
@@ -80,7 +98,7 @@ export class ListingsListComponent implements OnInit {
       next: () => {
       }
     });
-    this.getListings();
+    this.updateListingAndUser();
   }
 
   onUnlike({listing, user} : {listing: Listing, user: User}): void {
@@ -92,6 +110,6 @@ export class ListingsListComponent implements OnInit {
         next: () => {
         }
       });
-      this.getListings();
+      this.updateListingAndUser();
     }
 }

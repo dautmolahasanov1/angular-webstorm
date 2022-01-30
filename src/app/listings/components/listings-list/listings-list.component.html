@@ -2,7 +2,11 @@
 
 <a *ngIf="hasPermissions" routerLink="/main/listings/edit">Add new</a>
 
-<div class="card-wrapper">
+<button mat-stroked-button (click)="toggleFilter()" ncolor="warn">
+  {{ showFiltered ? "Show all listings" : "Show my favorites"}}
+</button>
+
+<div *ngIf="!showFiltered" class="card-wrapper">
   <app-listing-item
     *ngFor="let listing of listings"
     [listing]="listing"
@@ -13,3 +17,13 @@
   ></app-listing-item>
 </div>
 
+<div  *ngIf="showFiltered" class="card-wrapper">
+  <app-listing-item
+    *ngFor="let listing of filteredListings"
+    [listing]="listing"
+    (applyClicked)="onApply($event)"
+    (deleteClicked)="onDelete($event)"
+    (likeClicked)="onLike($event)"
+    (unlikeClicked)="onUnlike($event)"
+  ></app-listing-item>
+</div>

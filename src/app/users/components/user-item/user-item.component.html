@@ -6,7 +6,6 @@
 
   <mat-card-actions class="actions">
     <button
-      *ngIf="isAdmin"
       mat-button
       [routerLink]="['/main/users', 'edit', user.id ]"
     >
@@ -14,7 +13,6 @@
     </button>
 
     <button
-      *ngIf="isAdmin"
       mat-button
       (click)="onDelete()"
       color="warn"

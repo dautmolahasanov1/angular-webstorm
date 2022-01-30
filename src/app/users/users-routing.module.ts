@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { Route, RouterModule } from "@angular/router";
 import { AclGuard } from "../guards/acl.guard";
+import { AdminAuthGuard } from "../guards/admin-auth.guard";
 
 import { UserFormComponent } from "./components/user-form/user-form.component";
 import { UsersListComponent } from "./components/user-list/users-list.component";
@@ -14,7 +15,8 @@ const routes: Route[] = [
       {
         path: "",
         pathMatch: "full",
-        component: UsersListComponent
+        component: UsersListComponent,
+        canLoad: [AdminAuthGuard]
       },
       {
         path: "edit",
@@ -24,7 +26,6 @@ const routes: Route[] = [
       {
         path: "edit/:id",
         component: UserFormComponent,
-        canActivate: [AclGuard]
       },
     ]
   }

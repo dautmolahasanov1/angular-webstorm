@@ -92,9 +92,7 @@
       "description": "You clean",
       "title": "Job",
       "likeCount": 5,
-      "applicantIds": [
-        2
-      ],
+      "applicantIds": [],
       "category": "Back-end"
     }
   ]

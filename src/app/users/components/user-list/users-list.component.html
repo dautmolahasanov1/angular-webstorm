@@ -1,8 +1,8 @@
 <h3>Users</h3>
 
-<a *ngIf="hasPermissions" routerLink="/main/users/edit">Add new</a>
+<a *ngIf="hasAdminPermissions" routerLink="/main/users/edit">Add new</a>
 
-<div class="card-wrapper">
+<div *ngIf="hasAdminPermissions" class="card-wrapper">
   <app-user-item
     *ngFor="let user of users"
     [user]="user"
@@ -10,3 +10,9 @@
   ></app-user-item>
 </div>
 
+<div *ngIf="!hasAdminPermissions" class="card-wrapper">
+  <app-user-item
+    [user]="loggedUser"
+    (deleteClicked)="onDelete($event)"
+  ></app-user-item>
+</div>

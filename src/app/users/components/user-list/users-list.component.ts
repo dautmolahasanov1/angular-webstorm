@@ -12,7 +12,8 @@ import { UserService } from 'src/app/users/services/user.service';
 export class UsersListComponent implements OnInit {
 
   users: User[];
-  hasPermissions: boolean = false;
+  hasAdminPermissions: boolean = false;
+  loggedUser: User | null = null;
 
   constructor(
     private authService: AuthService,
@@ -33,7 +34,8 @@ export class UsersListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.hasPermissions = this.authService.hasPermissions( "admin");
+    this.loggedUser = this.authService.getLoggedUserFromLocalStorage();
+    this.hasAdminPermissions = this.loggedUser?.role === "admin";
     this.getUsers();
   }
 
@@ -44,5 +46,4 @@ export class UsersListComponent implements OnInit {
       }
     });
   }
-
 }

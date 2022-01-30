@@ -23,7 +23,7 @@ const routes: Route[] = [
   {
     path: "main/users",
     loadChildren: () => import("./users/users.module").then(m => m.UsersModule),
-    canLoad: [AdminAuthGuard]
+    canLoad: [AuthGuard]
   },
   {
     path: "",

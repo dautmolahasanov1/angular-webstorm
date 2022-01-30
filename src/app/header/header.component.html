@@ -8,14 +8,10 @@
     <button *ngIf="userRole !== null" mat-stroked-button class="header-link" routerLink="/main/listings" >
       Listings
     </button>
-    <button *ngIf="userRole === 'admin'" mat-stroked-button class="header-link" routerLink="/main/users" >
+    <button *ngIf="userRole !== null" mat-stroked-button class="header-link" routerLink="/main/users" >
       Users
     </button>
     <span class="spacer"></span>
-
-    <button *ngIf="userRole === 'user'" mat-button class="icon favorite-icon" aria-label="icon-button with heart icon">
-      My applications
-    </button>
 
     <button *ngIf="userRole === 'user'" matTooltip="My favorites" mat-icon-button class="icon favorite-icon" aria-label="icon-button with heart icon" color="warn">
       <mat-icon>favorite</mat-icon>
